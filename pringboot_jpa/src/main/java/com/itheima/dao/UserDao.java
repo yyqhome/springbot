@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
+
 /**
  * @Author: YYQ
  * @Description:
@@ -15,4 +17,6 @@ public interface UserDao extends JpaRepository<User,Integer> ,JpaSpecificationEx
 
     @Query(value = "select * from user where id = ? limit 1",nativeQuery = true)
     User findByUserId(Integer id);
+    @Query(value = "select * from user where username like ?",nativeQuery = true)
+    List<User> findConditionSql(String name);
 }
