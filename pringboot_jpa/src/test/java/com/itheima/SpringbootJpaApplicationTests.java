@@ -1,7 +1,10 @@
 package com.itheima;
 
+import com.itheima.dao.UserDao;
+import com.itheima.domain.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -9,8 +12,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class SpringbootJpaApplicationTests {
 
+    @Autowired
+    UserDao userDao;
     @Test
     public void contextLoads() {
+        User user = userDao.findByUserId(2);
+        System.out.println(user);
     }
 
 }

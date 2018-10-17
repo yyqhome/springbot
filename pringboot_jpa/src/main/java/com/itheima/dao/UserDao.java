@@ -3,6 +3,7 @@ package com.itheima.dao;
 import com.itheima.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  * @Author: YYQ
@@ -11,4 +12,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  * @Modified By:
  */
 public interface UserDao extends JpaRepository<User,Integer> ,JpaSpecificationExecutor<User> {
+
+    @Query(value = "select * from user where id = ? limit 1",nativeQuery = true)
+    User findByUserId(Integer id);
 }
